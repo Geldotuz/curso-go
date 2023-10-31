@@ -1,0 +1,418 @@
+
+/* for i := 1; i <= 100; i++ {
+	fmt.Println(i)
+} */
+
+/* for i := 65; i <= 90; i++ {
+	fmt.Println(i)
+	for j := 0; j <= 2; j++ {
+		fmt.Printf("\t%#U\n", i)
+	}
+
+} */
+
+/* años := 0
+for i := 1993; i <= 2023; i++ {
+	años++
+	if i == 1993 {
+		fmt.Printf("En %d tenia %d año\n", i, años)
+		continue
+	}
+	if i == 2023 {
+		fmt.Printf("En %d tengo %d años\n", i, años)
+		break
+	}
+	fmt.Printf("En %d tenia %d años\n", i, años)
+} */
+
+/* a1 := 1992
+	a2 := 2023
+
+	for {
+		a1++
+		if a1 >= a2 {
+			fmt.Println(a1)
+			break
+		}
+		fmt.Println(a1)
+	} */
+
+func Foo(n int) int {
+	fmt.Println(n)
+	return n
+}
+
+func main() {
+
+	switch time.Now().Weekday() {
+	case time.Saturday:
+		fmt.Println("Hoy es sabado")
+	case time.Sunday:
+		fmt.Println("Hoy es domingo")
+	default:
+		fmt.Println("Hoy trabajas")
+
+	}
+
+	switch hour := time.Now().Hour(); {
+	case hour < 12:
+		fmt.Println("Buenos dias")
+	case hour < 18:
+		fmt.Println("Buenas tardes")
+	default:
+		fmt.Println("buenas noches")
+	}
+
+	switch 2 {
+	case 1:
+		fmt.Println("Es uno")
+	case 2:
+		fmt.Println("Es dos")
+	default:
+		fmt.Println("No es un numero")
+	}
+
+	switch Foo(2) {
+	case Foo(1), Foo(2), Foo(3):
+
+	}
+}
+
+x := []int{42, 43, 44, 45, 46, 47, 48, 49, 50, 51}
+
+	/* for _, i := range x {
+		fmt.Println(i)
+	}
+
+	fmt.Println(x[:5])
+	fmt.Println(x[5:10])
+	fmt.Println(x[2:7])
+	fmt.Println(x[1:6]) */
+
+	/* x = append(x, 52)
+
+	fmt.Println(x)
+
+	x = append(x, 53, 54, 55)
+
+	fmt.Println(x)
+
+	y := []int{56, 57, 58, 59}
+
+	x = append(x, y...)
+
+	fmt.Println(x) */
+
+	/* y := append(x[:3], x[6:]...)
+
+	fmt.Println(y) */
+
+	/* letras := make([]string, 50, 50)
+
+	letras = []string{"a", "b", "c", "d", "e", "f", "g", "h", "i"}
+
+	/* 	fmt.Println(len(letras))
+	   	fmt.Println(cap(letras)) */
+
+	for i := 0; i < len(letras); i++ {
+		fmt.Printf("%d %s\n", i, letras[i])
+	} */
+
+	/* x := []string{"batman", "jefe", "negro"}
+	y := []string{"joker", "viljefe", "verde"}
+
+	z := [][]string{x, y}
+
+	for _, i := range z {
+		for _, j := range i {
+			fmt.Println(j)
+		}
+	} */
+
+	/* x := map[string][]string{
+		`angel`: []string{"armando", "martin", "ruiz"},
+		`leia`:  []string{"sofia", "papatathopolus", "tercera"},
+	}
+
+	for j, i := range x {
+		fmt.Printf("nombre %s\n %s\n", j, i)
+	} */
+
+	/* type Persona struct {
+		Nombre   string
+		Apellido string
+		Edad     int
+	}
+
+	p1 := Persona{
+		Nombre:   "Angel",
+		Apellido: "Martin",
+		Edad:     30,
+	}
+
+	fmt.Println(p1)
+	fmt.Println(p1.Apellido) */
+
+	/* type Persona struct {
+		Nombre   string
+		Apellido string
+		Edad     int
+	}
+
+	type AgenteSecreto struct {
+		Persona
+		life bool
+	}
+
+	ag := AgenteSecreto{Persona: Persona{
+		Nombre:   "Angel",
+		Apellido: "Martin",
+		Edad:     30,
+	},
+		life: true,
+	}
+
+	fmt.Println(ag) */
+
+	/* package main
+
+import "fmt"
+
+type Persona struct {
+	Nombre   string
+	Apellido string
+	Helado   []string
+}
+
+func main() {
+	p1 := Persona{
+		Nombre:   "Angel",
+		Apellido: "Martin",
+		Helado:   []string{"Chocolate", "Vainilla"},
+	}
+
+	for _, c := range p1.Helado {
+		fmt.Println(c)
+	}
+
+}
+ */
+
+ /* package main
+
+import "fmt"
+
+type Persona struct {
+	Nombre   string
+	Apellido string
+	Helado   []string
+}
+
+func main() {
+	p1 := Persona{
+		Nombre:   "Angel",
+		Apellido: "Martin",
+		Helado:   []string{"Chocolate", "Vainilla"},
+	}
+	mp := map[string]Persona{
+		p1.Apellido: p1,
+	}
+
+	for _, p := range mp {
+		fmt.Println(p.Nombre)
+	}
+}
+ */
+
+ /* package main
+
+import "fmt"
+
+type Vehiculo struct {
+	Puertas int
+	Color   string
+}
+
+type Camion struct {
+	Vehiculo
+	CuatroRuedas bool
+}
+
+type Sudan struct {
+	Vehiculo
+	Lujoso bool
+}
+
+func main() {
+	c := Camion{
+		Vehiculo: Vehiculo{
+			Puertas: 4,
+			Color:   "Red",
+		},
+		CuatroRuedas: true,
+	}
+
+	s := Sudan{
+		Vehiculo: Vehiculo{
+			Puertas: 2,
+			Color:   "Blue",
+		},
+		Lujoso: false,
+	}
+
+	fmt.Println(c)
+	fmt.Println(s)
+} */
+
+/* package main
+
+import "fmt"
+
+func main() {
+	num1 := foo()
+	num2, bar := bar()
+
+	fmt.Println(num1)
+	fmt.Println(num2, bar)
+}
+
+func foo() int {
+	return 1
+}
+
+func bar() (int, string) {
+	return 2, "Bar"
+}
+ */
+
+ /* package main
+
+import "fmt"
+
+func main() {
+	num := []int{1, 2, 3, 4, 5, 6, 7, 8, 9}
+	defer bar()
+	foo(num...)
+}
+
+func foo(xi ...int) {
+	total := 0
+	for _, i := range xi {
+		total += i
+	}
+	fmt.Println(total)
+}
+
+func bar() {
+	fmt.Println("Hola al final")
+}
+ */
+
+ /* package main
+
+import "fmt"
+
+type Persona struct {
+	Nombre   string
+	Apellido string
+	Edad     int
+}
+
+func main() {
+	p1 := Persona{
+		Nombre:   "angel",
+		Apellido: "martin",
+		Edad:     30,
+	}
+	p1.presentar()
+}
+
+func (p Persona) presentar() {
+	fmt.Printf("Hola mi nombre es %s y mi edad es %d", p.Nombre, p.Edad)
+}
+
+ */
+
+ /* package main
+
+import (
+	"fmt"
+	"math"
+)
+
+type Circulo struct {
+	Radio float64
+}
+
+type Cuadrado struct {
+	Longitud float64
+}
+
+func (c Circulo) Area() float64 {
+	return math.Pi * c.Radio * c.Radio
+}
+
+func (c Cuadrado) Area() float64 {
+	return c.Longitud * c.Longitud
+}
+
+type Forma interface {
+	Area() float64
+}
+
+func info(f Forma) {
+	fmt.Println(f.Area())
+}
+
+func main() {
+
+	cir := Circulo{
+		Radio: 5.9,
+	}
+
+	cua := Cuadrado{
+		Longitud: 5,
+	}
+
+	info(cir)
+	info(cua)
+
+}
+ */
+
+ /* package main
+
+import (
+	"encoding/json"
+	"fmt"
+)
+
+type Persona struct {
+	Name string
+	Age  int
+	Eye  string
+}
+
+func main() {
+	p1 := Persona{
+		Name: "Angel",
+		Age:  30,
+		Eye:  "Brown",
+	}
+	p2 := Persona{
+		Name: "Marin",
+		Age:  24,
+		Eye:  "Green",
+	}
+
+	Personas := []Persona{p1, p2}
+
+	fmt.Println(Personas)
+
+	bs, err := json.Marshal(Personas)
+	if err != nil {
+		panic(err.Error())
+	}
+
+	fmt.Println(string(bs))
+} */
